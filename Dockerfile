@@ -1,5 +1,8 @@
-FROM centos:centos7
-MAINTAINER Bartosz Gadzała <bartosz.gadzala@gmail.com>
-RUN yum clean all
-RUN yum -y install epel-release
-RUN yum -y install PyYAML python-jinja2 python-httplib2 python-keyczar python-paramiko python-setuptools git python-pip openssh ansible
+FROM ubuntu:19.10
+
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install -y software-properties-common
+
+RUN apt-add-repository ppa:ansible/ansible-2.9
+RUN apt-get update -y 
+RUN apt-get install -y python ansible
